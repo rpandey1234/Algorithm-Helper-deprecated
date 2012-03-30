@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="file:///android_asset/detail.css">
+	<title>Web Programming Overview</title>
+</head>
+
+<body>
+<h1> Web Programming - Overview</h1>
+<p>What happens when you navigate to a URL in your browser: </p>
+<ul>
+	<li>The browser looks up the IP address for the domain name. The DNS lookup first checks if the DNS record is cached before recursively searching through namespaces.</li>
+	<li>The browser sends an HTTP request to the web server. The request may contain cookies (key-value pairs) which are used to identify the user.</li>
+	<li>The web server may respond with a re-direct, which the browser follows by sending another HTTP request.</li>
+	<li>The web server handles the GET or POST request, by looking at parameters.</li>
+	<li>The web server sends back an HTML response.</li>
+	<li>The browser begins rendering the HTML and CSS (it doesn't need to receive the entire request).</li>
+	<li>The browser may send additional requests to the server to retrieve images, JavaScript files, or other objects embedded in the HTML from the website's content delivery network (CDN).</li>
+	<li>The browser may send even more requests. These are asynchronous (AJAX) requests which can update portions of the webpage.</li>
+</ul>
+
+<p> There are two submission methods for a form, GET and POST.</p>
+<ul>
+    <li> "GET" means that form data is to be encoded (by a browser) into a URL. GET should be used for retrieving data. </li>
+    <li> "POST"means that the form data is to appear within a message body. POST can be used with things like logging in, storing and updating data, or sending email. </li>
+</ul>
+
+
+
+</body>
+</html>

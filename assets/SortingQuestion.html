@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<script src="jquery.js" type="text/javascript"></script>
+	<script src="collapse_accordion.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="file:///android_asset/detail.css">
+	<title>Sorting Questions</title>
+</head>
+
+<body>
+<h1>Sorting Questions </h1>
+
+<div class="accordion">
+	<p class="collapse">Why is quicksort generally better than mergesort?</p>
+	<div class="answer">
+		<p> Typically, quicksort is significantly faster in practice than other O(nlogn) algorithms, because its inner loop can be efficiently implemented on most architectures, and in most real-world data, it is possible to make design choices which minimize the probability of requiring quadratic time.</p>
+	</div>
+	
+	<p></p>
+	<p class="collapse">Under what circumstance will Bubble sort perform poorly?</p>
+	<div class= "answer">
+		<p> If the array is completely sorted except the least element is last, then the algorithm will take O(n<sup>2</sup>) bubbling it down. Selection sort will always take O(n<sup>2</sup>) operations.</p>
+	</div>
+	
+	<p></p>
+	<p class="collapse">Real world application?</p>
+	<div class="answer">
+		<p> In the real-world, it is rare that the data is completely random. Based on the data set, it is usually best to use a combination of sorting algorithms.</p>
+	</div>
+</div>
+</body>
+</html>

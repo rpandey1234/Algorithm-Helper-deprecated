@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<script src="jquery.js" type="text/javascript"></script>
+	<script src="collapse_accordion.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="file:///android_asset/detail.css">
+	<title>Graph Questions</title>
+</head>
+
+<body>
+<h1>Graph Questions</h1>
+<div class="accordion">
+	<p class="collapse">If you perform a depth first search in a binary tree, what traversal will you obtain?</p>
+	<div class="answer">
+		<p>In depth-first order, we always attempt to visit the node farthest from the root. Thus we get pre-order traversal.</p>
+	</div>
+	
+	<p></p>
+	<p class="collapse">In a connected undirected graph with n nodes, what is the minimum number of edges?</p>
+	<div class="answer">
+		<p>The minimum number of edges is n-1. It helps to think about the extreme case: 
+		If there were only two vertices, then there can only be one edge.</p>
+	</div>
+	
+	<p></p>
+	<p class="collapse">In a connected undirected graph with n nodes, what is the maximum number of edges?</p>
+	<div class="answer">
+		<p>Each vertex can have an edge to each of the other n-1 vertices. Thus the the maximum 
+		number of edges is (n-1)n for directed graphs, and (n-1)n/2 for undirected graphs.</p>
+	</div>
+</div>
+</body>
+</html>

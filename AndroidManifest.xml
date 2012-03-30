@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.stanford.rkpandey"
+    android:versionCode="2"
+    android:versionName="1.1" >
+    <uses-sdk android:minSdkVersion="7" />
+
+    <application
+        android:icon="@drawable/panda_big"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".AlgorithmHelperActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".GraphActivity" android:label="@string/app_name"
+          	android:theme="@android:style/Theme.NoTitleBar">       
+        </activity>
+        <activity
+            android:name=".GraphOActivity">
+        </activity>
+        <activity
+            android:name=".GraphQActivity">
+        </activity>
+        <activity
+            android:name=".SortingActivity" android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".SortingOActivity">
+        </activity>
+        <activity
+            android:name=".SortingQActivity">
+        </activity>
+        <activity
+            android:name=".BSTActivity" android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".BSTOActivity">
+        </activity>
+        <activity
+            android:name=".BSTQActivity">
+        </activity>
+        <activity
+            android:name=".LinkedListActivity" android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".LinkedListOActivity">
+        </activity>
+        <activity
+            android:name=".LinkedListQActivity">
+        </activity>
+    </application>
+
+</manifest>

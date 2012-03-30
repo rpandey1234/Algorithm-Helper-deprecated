@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="file:///android_asset/detail.css">
+	<title>Binary Search Trees Overview</title>
+</head>
+
+<body>
+<h1> Binary Search Trees - Overview</h1>
+<p>A tree is a collection of individual entries called nodes such that: </p>
+<ul>
+	<li>There exists a unique node called the root node that forms the top of the hierarchy.</li>
+	<li>Every other node is connected to the root by a unique line of descent.</li>
+</ul>
+<p>A binary tree is a tree with the following additional properties:</p>
+<ul>
+ <li>Each node in the tree has at most two children</li>
+ <li>Every node except the root is designated as a left or right child of its parent.</li>
+</ul>
+
+<p>A binary search tree (BST) also obeys:</p>
+<ul>
+ <li>Every node contains a key which defines the order of the nodes</li>
+ <li>Key values are unique</li>
+ <li>At every node in the tree, the key value must be greater than all the keys in the left subtree and less than all the keys in the right subtree</li>
+</ul>
+
+<p> Definition of a node: </p>
+<code>
+<ul>
+	<li>struct nodeT {</li>
+		<li>int key; </li>
+		<li>nodeT *left, *right;</li>
+	<li>}; </li>
+
+	<!-- TODO: find how to make multi-line code be pretty, with tabbing-->
+
+	<li>nodeT *FindNode(nodeT *t, int key) {</li>
+   	<li>if (t == NULL) return NULL;</li>
+    	<li>if (key == t->key) return t;</li>
+    	<li>if (key < t->key) {</li>
+    	    <li>return FindNode(t->left, key);</li>
+    	<li>} else {</li>
+    	    <li>return FindNode(t->right, key);</li>
+    	<li>}</li>
+	}</li>
+</ul>
+</code>
+
+<p>In-order traversal (least to greatest):</p>
+<code>
+void DisplayTree(nodeT* t) {<br>
+	if (t != NULL) {<br>
+		DisplayTree(t->left);<br>
+		print t->key;<br>
+		DisplayTree(t->right);<br>
+	}<br>
+}<br>
+</code>
+
+<p>In pre-order traversal, the current node is processed BEFORE either of its subtrees.
+In post-order traversal, the current node is processed AFTER the subtrees. </p>
+
+<p>
+The running time of tree traversal algorithms is proportional to the height of the tree, which is ideally O(log N). Binary search achieves its ideal performance only if the left and right subtrees have roughly the same height at each level. A binary tree is defined to be balanced if, at each node, the height of the left and right subtrees differ by at most one.
+</p>
+<p>
+One simple tree balancing algorithm is the AVL algorithm. Each node keeps track of a value called the balance factor, an integer that is the height of the right subtree minus the height of the left subtree. For a tree to be balanced, all of the nodes must have balance factor of -1, 0 , or +1. Note that, in an AVL tree, every node must have absolute value of the balance factor be less than or equal 2. If it is more than than, the AVL algorithm will intervene to ensure a balance factor of -1, 0, or +1.
+</p>
+
+<p>There are 4 cases, of which two are symmetric to the other two.</p>
+<p>Right-right case and Right-left case:</p>
+<ul>
+	<li> If the balance factor of P is -2 then the right subtree outweighs the left subtree, and the balance factor of the right child (R) must be checked. The left rotation with P as the root is necessary.</li>
+	<li> If the balance factor of R is -1, a single left rotation (with P as root) is needed (Right-right case).</li>
+	<li> If the balance factor of R is +1, two rotations are needed. The first rotation is a right rotation with R as root. The second is a left rotation with P as the root (Right-left case).</li>
+</ul>
+<p>Left-left case and Left-right case:</p>
+<ul>
+	<li> If the balance factor of P is +2, then the left subtree outweighs the right subtree of the given node, and the balance factor of the left child (L) must be checked. The right rotation with P as the root is necessary.</li>
+	<li> If the balance factor of L is +1, a single right rotation (with P as root) is needed (Left-left case).</li>
+	<li> If the balance factor of L is -1, two rotations are needed. The first rotation is a left rotation with L as root. The second is a right rotation with P as root (Left-right case). </li>
+</ul>
+
+
+<p>Another approach is red-black trees, in which each node is assigned a color, either red or black. The tree obeys the following properties: </p>
+<ol>
+	<li>The root node is black.</li>
+	<li>The parent of every red node is black (ie. no two red nodes in a row).</li>
+	<li>Every path from the root to the leaf contains the same number of black nodes.</li>
+</ol>
+
+<p>Claim: A red-black tree with n nodes has height <= to 2log(n+1).</p>
+<p>Proof: If every root-null path has >= k nodes, then the tree includes a full binary search tree of depth k. Therefore n >= 2<sup>k</sup> - 1. So the minimum number of (black) nodes on a root-null path is log(n+1). Therefore, the total number of nodes in any root-null path is <= 2log(n+1).</p>
+
+<p>Insertion and deletion can be done (with invariants maintained) in O(log n) time.</p>
+<p>AVL trees have fast retrieval but slow insertion because they have a more rigid structure than red-black trees.</p>
+</body>
+</html>

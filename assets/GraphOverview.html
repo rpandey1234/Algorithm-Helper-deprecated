@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="file:///android_asset/detail.css"/>
+	<title>Graph Algorithms Overview</title>
+</head>
+
+<body>
+	<h1> Graph Algorithms </h1>
+	<p>Given graph G, denote the number of edges with m, and the number of nodes with n. Suppose we have an undirected graph, with only one edge between each node. The densest graph has m = n C 2 = n(n-1)/2 edges. In a directed graph, we have twice the number of edges, n(n-1). In either case, m = O(n<sup>2</sup>).</p>
+	
+	<p>If G is connected, then m >= n-1</p>
+	<p>There are 2 ways to represent a graph:</p>
+	<ul>
+		<li>Adjacency Matrix: Represent G with an n by n 01 matrix A, where A<sub>ij</sub> is 1 iff G has an ij edge. This has O(n<sup>2</sup>) space requirement.</li>
+		<li>Adjacency List: There is an array of vertices. Every vertex stores a list of adjacent vertices. This data structure allows the storage of additional data on the vertices. The total space requirement is O(m+n). </li>
+	</ul>
+	<p>Adding/removing a vertex to a graph is constant time in adjacency lists, while it takes O(n<sup>2</sup>) time in an adjacency matrix. Adjacency lists are slower in querying if two vertices are adjacent (require O(m) time compared to O(1)). Adjacency lists are generally preferred because they efficiently represent sparse graphs.</p>
+	
+	<h3>Graph Connectivity</h3>
+	<p>Graph Primitives: breadth first search (BFS) and depth first search (DFS)</p>
+	<p>BFS is where you explore in a cautious, tentative way. Keep track of the nodes using a queue.</p>
+	<ul>
+		<li>Start at node S (layer 0)</li>
+		<li>Explore the neighbors of S (layer 1).</li>
+		<li>Then the neighbors of layer 1 nodes</li>
+		<li>etc</li>
+	</ul>
+	<p>DFS is aggressive search, similar to how you would explore a maze. Keep track of the next nodes using a stack, or with a recursive loop.</p>
+	<ul>
+		<li>Start at node S</li>
+		<li>When you reach a node, immediately start exploring its (not yet visited) neighbors.</li>
+	</ul>
+	<p>Both DFS and BFS run in O(m+n) time, since a node is only visited once.</p>
+	
+	<h3> Dijkstra's Algorithm </h3>
+	<p> Dijkstra's Algorithm solves the single source shortest path (SSSP) problem. We are given a directed graph G where each edge has length c<sub>e</sub>, and a source vertex <em>s</em>. For each possible destination v in V, compute the length D(v) of the shortest s-v path in G. Note that we assume that all edge lengths are nonnegative, and there exists a path from s to v for all v in V. Use Bellman-Ford if there are negative edge lengths.</p>
+	
+	<p>The idea behind Dijkstra is to start somewhere and grow as a mold, eventually covering the entire graph.</p>
+	
+	<p>Algorithm (proof by induction):</p>
+	<ul>
+		<li>Initialize X = {s}.</li>
+		<li>A[s] = 0</li>
+		<li>B[s] is the empty path.</li>
+	</ul>
+	<p>(The goal is that for all v in V , A[v] = D(v). We want the array B[v] to contain the actual shortest paths from s to v. X will be the vertices whose A values we've already computed.)</p>
+	<p>While X != V:</p>
+	<ul>
+		<li>Among all edges (v, w) in E that "cross the frontier" (v in X, w not in X), pick the one minimizing A(v) + c<sub>vw</sub>. Let this be the edge (v*, w*). Add w* to X.</li>
+		<li>Set A[v*] := A[v*] + c<sub>v*w*</sub></li>
+		<li>Set B[w*] := B[v*] &cup; (v*, w*).</li>
+	</ul>
+	<h3>Strongly Connected Components</h3>
+	<p> In a directed graph G, a strongly connected component (SCC) is a set of vertices S such that there is a path from each vertex in S to every other vertex in S. </p>
+	<p>If each SCC is contracted to a single vertex, the resulting graph is a directed acyclic graph (DAG), the condensation of G. (If the resulting graph was not a DAG, then the resulting cycle could be used to collapse into a single SCC.)</p>
+	<p> Kosaraju's Algorithm for finding SCCs.</p>
+	<ul>
+		<li> Let G<sup>rev</sup> = G with all arcs reversed</li>
+		<li>Run DFS on G<sup>rev</sup>, let f(v) be the finishing time of each v in V.</li>
+		<li>Run DFS on the original graph G, processing nodes in decreasing order of f(v).</li>
+	</ul>
+	<p> Clearly, the algorithm runs in linear O(m+n) time, since it is essentially two depth first searches.</p>
+	<p> The idea is that we want the second DFS to start at sink SCCs, so we can entirely explore the SCC before moving on. The first DFS call does the pre-processing necessary by ordering the nodes by finishing times.</p>
+	
+	<h3>Minimum Spanning Trees</h3>
+	<p> There are two main algorithms for finding minimum spanning trees (MST), both of which are greedy algorithms.</p>
+	<p> Prim's Algorithm:</p>
+	<p>Initialize X = {s}, chosen arbitrarily, T={}. Maintain  the invariant that X will be the vertices spanned so far by T. </p>
+<pre>
+  While X != V:
+	Let e = (u, v) be the cheapest edge with u in X, v not in X.
+	Add e to T
+  Add v to X
+</pre>
+	<p> This is like Dijkstra, we grow the frontier like a mold.</p>
+	<p> Naive running time is O(mn), but using a heap, we can speed up to O(mlogn).</p>
+	
+	<p> Kruskal's Algorithm:</p>
+	<li>Sort edges in order of increasing cost (rename edges {1, 2, ... m} such that c<sub>1</sub> < c<sub>2</sub> < ... < c<sub>m</sub>)</li>
+<pre>
+T = {}
+for edges i=1 to m
+  if T &cup; {i} has no cycles
+    add i to T
+Return T
+</pre>
+	<p>In Kruskal's algorithm, the MST we are constructing need not be connected. We can also get Kruskal's Algorithm to run in O(mlogn) time using Union-Find.</p>
+	
+	<!-- TODO: Add Bellman-Ford (SSSP with neg edge lengths) and Ford-Fulkerson (all pairs shortest path)-->
+</body>
+</html>

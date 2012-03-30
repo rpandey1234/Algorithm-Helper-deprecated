@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="info">This app is designed to help you review basic ideas for software interviews.</string>
+    <string name="app_name">Algorithm Helper</string>
+    <string name="graphs">Graph Algorithms</string>
+    <string name="sorting">Sorting Algorithms</string>
+    <string name="bst">Binary Search Trees</string>
+    <string-array name="topics_array">
+        <item>Graph Algorithms</item>
+        <item>Sorting Algorithms</item>
+        <item>Binary Search Trees</item>
+   	</string-array>
+    <string name="about">About</string>
+    <string name="image_desc">An image about the topic</string>
+
+</resources>

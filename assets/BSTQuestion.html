@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<script src="jquery.js" type="text/javascript"></script>
+	<script src="collapse_accordion.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="file:///android_asset/detail.css">
+	<title>BST Questions</title>
+</head>
+
+<body>
+<h1>Binary Search Trees Questions </h1>
+
+<div class="accordion">
+	<p class="collapse">Given the head of a Binary Search tree, trim the tree, so that all elements in the new tree returned are between the inputs A and B</p>
+	<div class="answer">
+		<pre>
+Node Trim(Node root, int A, int B) {
+  if(root==null) return null;
+
+  if(root.data>B) return Trim(root.left,A,B);
+  else if(root.data < A) return Trim(root.right,A,B);
+  else {
+    root.left=Trim(root.left,A,B);
+    root.right=Trim(root.right,A,B);
+  } 
+  return root;
+}
+		</pre> 
+		<!--(need to free memory...) -->
+	</div>
+	
+	<p></p>
+	
+	<p class="collapse">Check if a binary tree is a binary search tree.</p>
+	<div class="answer">
+		<p>Do an in-order traversal of the tree and check if that is sorted. If it's sorted, it is a BST. </p>
+	</div>
+</div>
+</body>
+</html>

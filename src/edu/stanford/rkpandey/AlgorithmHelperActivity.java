@@ -40,7 +40,7 @@ public class AlgorithmHelperActivity extends ListActivity {
 	public void onListItemClick(ListView parent, View v, int position, long id) {
 		super.onListItemClick(parent, v, position, id);
 		TopicRecord topic = topics.get(position);
-		//Toast.makeText(this, "You've selected " + topic.topic, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "You've selected " + topic.topic, Toast.LENGTH_LONG).show();
 		Intent intent = new Intent(this, topic.cls);
 		startActivity(intent);
 	}

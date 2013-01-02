@@ -14,6 +14,11 @@
 	<li>Disadvantage: Requires more memory space than arrays because a node must store the memory address of the next element in the list, while arrays live in a contiguous memory block.</li>
 	<li>Disadvantage: Less efficient at selecting a value at a particular index position. </li>
 	<li>Advantage: Insertion and deletion operation in constant time.</li>
+	<li>Advantage: It's easier to store data of different sizes. An array assumes each element must be the same type and same size. </li>
+	<li>Advantage: A linked list can grow organically. An array's size is fixed, so the number of elements must be known before hand. </li>
+	<li>Advantage: A linked list is better suited for multi-threaded operations. Since changes are local, only a few pointers are changed. Anytime the array size changes, it requires a global lock. . </li>
+	
+	
 </ul>
 
 <p>To iterate through a linked list, use the idiomatic for loop:</p>

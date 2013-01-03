@@ -1,3 +1,5 @@
+Algorithm Helper
+---------
 Algorithm Helper covers common topics discussed in software interviews, including graph algorithms, binary search trees, linked lists, and sorting. We provide an overview and common interview questions for each topic. The coverage is broad and lightweight enough to be helpful to the advanced undergraduate or professional who would like to sharpen his/her technical interview skills on the go. To be as general and accessible as possible, we tried to make algorithm questions language agnostic.
 Most of the content came from two courses taught at Stanford University:
 - CS 161, Design and Analysis of Algorithms (cs161.stanford.edu). I borrowed heavily from the notes compiled by Moor Xu, http://stanford.edu/~moorxu/notes/161/161main.pdf.
